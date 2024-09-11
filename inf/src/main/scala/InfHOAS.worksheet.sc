@@ -56,3 +56,7 @@ infer(lam(x => x))
 infer(app(lam(x => x), n))
 infer(lam(x => lam(y => app(x, y))))
 infer(lam(x => lam(y => app(app(x, n), y))))
+
+def let(x: Expr, f: Expr => Expr) = app(lam(f), x)
+
+infer(let(lam(x => x), id => app(id, n)))
